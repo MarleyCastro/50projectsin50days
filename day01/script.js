@@ -1,32 +1,26 @@
-    function clique() {
-        let  calcular = (operador,num1,num2) =>{
-    switch (operador) {
-        case '+':
-            return num1 + num2
+document.addEventListener('DOMContentLoaded', function() {
+    let input = document.getElementById('input-box');
+    let buttons = document.querySelectorAll('button');
 
-        case '*':
-            
-            return num1 + num2
-
-        case '/':
-            
-            return num1 + num2
-
-        case '-':
-            
-            return num1 + num2
+    let string = ""; // Mudei o nome para minúsculo para evitar conflito
+    let arr = Array.from(buttons);
     
-        default:
-        return alert('Operador inválido')
-    }
-}
-
-    let operador = prompt("Escolha um desses operadores [+,-,/,*]")
-    let num1 = parseFloat(prompt("insira o primeiro"))
-    let num2 = parseFloat(prompt("insira o segundo"))
-
-    let resultadoCalculo = calcular(operador,num1,num2)
-
-    document.getElementById("resultado").innerHTML = "Resultado " + resultadoCalculo
-    }
-    
+    arr.forEach(button => {
+        button.addEventListener('click', (e) => {
+            if(e.target.innerHTML == '='){
+                string = eval(string);
+                input.value = string;
+            } else if(e.target.innerHTML == 'AC'){
+                string = "";
+                input.value = string;
+            } else if(e.target.innerHTML == 'DEL'){
+                string = string.substring(0, string.length-1);
+                input.value = string; // Corrigido: adicionei o = string
+            } else {
+                string += e.target.innerHTML;
+                input.value = string;
+            }
+            // REMOVI as duas linhas duplicadas que estavam aqui
+        });
+    });
+});
