@@ -39,12 +39,3 @@ function clique() {
     // Exibe o resultado no elemento HTML com id "resultado"
     document.getElementById("resultado").innerHTML = "Resultado " + resultadoCalculo
 }
-Estas explicações detalham cada etapa do funcionamento da calculadora, o que será útil para documentar seu projeto no GitHub. Elas mostram:
-
-A estrutura da função principal
-Como a função de cálculo interna funciona
-O processo de coleta de dados do usuário
-Como cada operação matemática é realizada
-Como o resultado é exibido na página
-
-Esta documentação ajudará outros desenvolvedores a entenderem seu código facilmente.
