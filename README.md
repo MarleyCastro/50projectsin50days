@@ -1,41 +1,26 @@
-<h1>Projeto número 1</h1>
-javascriptCopy// Define a função principal que será chamada quando o botão for clicado
-function clique() {
-    // Define uma função interna (arrow function) que realiza os cálculos
-    // Recebe o operador e dois números como parâmetros
-    let calcular = (operador, num1, num2) => {
-        // Usa um switch para verificar qual operador foi escolhido
-        switch (operador) {
-            case '+':
-                return num1 + num2  // Soma os dois números
+<h1>1 - Calculadora</h1>
+# Descrição do Código da Calculadora
 
-            case '*':
-                return num1 * num2  // Multiplica os dois números
+Este código JavaScript implementa uma calculadora básica com interface web. A calculadora suporta operações matemáticas padrão (adição, subtração, multiplicação e divisão), além de funcionalidades para limpar o visor e apagar caracteres.
 
-            case '/':
-                return num1 / num2  // Divide o primeiro número pelo segundo
+## Funcionalidades Principais
 
-            case '-':
-                return num1 - num2  // Subtrai o segundo número do primeiro
-        
-            default:
-                // Se o operador não for reconhecido, mostra um alerta de erro
-                return alert('Operador inválido')
-        }
-    }
+O código:
+1. Espera pelo carregamento completo do DOM para garantir que todos os elementos HTML estejam disponíveis
+2. Seleciona o campo de entrada e todos os botões da calculadora
+3. Configura event listeners para cada botão da calculadora
+4. Gerencia diferentes ações dependendo do botão pressionado:
+   - Números e operadores são adicionados à expressão atual
+   - O botão "=" avalia a expressão matemática e exibe o resultado
+   - O botão "AC" (All Clear) limpa completamente a expressão
+   - O botão "DEL" (Delete) remove o último caractere da expressão
 
-    // Solicita ao usuário que escolha um operador matemático
-    let operador = prompt("Escolha um desses operadores [+,-,/,*]")
-    
-    // Solicita o primeiro número e converte para número decimal
-    let num1 = parseFloat(prompt("insira o primeiro"))
-    
-    // Solicita o segundo número e converte para número decimal
-    let num2 = parseFloat(prompt("insira o segundo"))
+## Detalhes de Implementação
 
-    // Chama a função calcular com os parâmetros informados pelo usuário
-    let resultadoCalculo = calcular(operador, num1, num2)
+- Usa o método `eval()` para calcular o resultado de expressões matemáticas
+- Implementa manipulação de strings para gerenciar a expressão que está sendo construída
+- Atualiza o campo de entrada da calculadora para refletir as alterações após cada interação do usuário
+- Segue o padrão de event listener para responder aos cliques nos botões
+- Organiza a lógica em estruturas condicionais para tratar diferentes tipos de botões
 
-    // Exibe o resultado no elemento HTML com id "resultado"
-    document.getElementById("resultado").innerHTML = "Resultado " + resultadoCalculo
-}
+Este código proporciona uma implementação funcional de uma calculadora simples para operações matemáticas básicas em uma página web.
