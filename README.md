@@ -126,8 +126,77 @@ O algoritmo de geração:
 
 3. **Detecção de caso-limite**: Inclui lógica para lidar com o caso em que nenhum tipo de caractere foi selecionado.
 
-4. **Modelo de listener separado**: Separa a lógica de atualização da interface da lógica de geração de senha.
+<h1>3 - Calculadora</h1>
 
-5. **Acesso direto ao DOM**: Utiliza referências diretas aos elementos HTML para manipulação eficiente.
+Claro! Vou explicar o código JavaScript passo a passo:
+javascriptCopydocument.addEventListener('DOMContentLoaded', () => {
+    // Este evento garante que o código só rodará depois que todo o HTML for carregado
+
+DOMContentLoaded é um evento que espera o documento HTML ser completamente carregado antes de executar o código.
+Isso evita erros de tentar acessar elementos HTML que ainda não existem.
+
+javascriptCopy    const hourHand = document.getElementById('hour');
+    const minuteHand = document.getElementById('min');
+    const secondHand = document.getElementById('sec');
+
+Estas linhas capturam as referências para os ponteiros do relógio no HTML
+document.getElementById() encontra os elementos com os IDs 'hour', 'min', e 'sec'
+
+javascriptCopy    function updateClock() {
+        // Obtém o momento atual
+        const now = new Date();
+        
+        // Extrai segundos, minutos e horas
+        const seconds = now.getSeconds();
+        const minutes = now.getMinutes();
+        const hours = now.getHours() % 12; // Converte para formato 12h
+
+new Date() cria um objeto com a data e hora atuais
+getSeconds(), getMinutes(), getHours() extraem os valores atuais
+% 12 converte horas para formato 12h (então 13h vira 1h, por exemplo)
+
+javascriptCopy        // Calcula os graus de rotação para cada ponteiro
+        const secondDegrees = seconds * 6;
+        const minuteDegrees = minutes * 6 + seconds * 0.1;
+        const hourDegrees = hours * 30 + minutes * 0.5;
+
+Para segundos: cada segundo representa 6 graus (360° ÷ 60 segundos)
+Para minutos: cada minuto representa 6 graus
+
+Adiciona um pequeno ajuste baseado nos segundos para movimento suave
+
+
+Para horas: cada hora representa 30 graus (360° ÷ 12 horas)
+
+Adiciona um pequeno ajuste baseado nos minutos para movimento suave
+
+
+
+javascriptCopy        // Aplica as rotações nos ponteiros
+        secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+        minuteHand.style.transform = `rotate(${minuteDegrees}deg)`;
+        hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+    }
+
+style.transform = rotate() gira cada ponteiro no ângulo calculado
+Usa template literals (`` `) para inserir os graus de rotação
+
+javascriptCopy    // Atualiza o relógio imediatamente e depois a cada segundo
+    updateClock();
+    setInterval(updateClock, 1000);
+
+updateClock() é chamado imediatamente para mostrar a hora inicial
+setInterval() chama updateClock() a cada 1000 milissegundos (1 segundo)
+Isso faz o relógio atualizar continuamente
+
+Principais conceitos:
+
+Manipulação de data e hora
+Cálculo de rotação de ponteiros
+Eventos do DOM
+Atualização periódica com setInterval()
+5. **Modelo de listener separado**: Separa a lógica de atualização da interface da lógica de geração de senha.
+
+6. **Acesso direto ao DOM**: Utiliza referências diretas aos elementos HTML para manipulação eficiente.
 
 Este código representa uma implementação simples mas eficaz de um gerador de senhas, equilibrando a complexidade do algoritmo com uma experiência de usuário intuitiva.
