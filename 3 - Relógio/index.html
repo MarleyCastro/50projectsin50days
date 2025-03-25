@@ -4,17 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
     <title>Relógio</title>
 </head>
 <body>
     <div class="container">
         <div class="clock">
-
-            <div style="" class="hand"><i></i></div>
-            <div style="" class="hand"><i></i></div>
-            <div style="" class="hand"><i></i></div>
-
+            <div id="hour" style="--clr: #ff3d58;" class="hand"><i></i></div>
+            <div id="min" style="--clr: #00a6ff;" class="hand"><i></i></div>
+            <div id="sec" style="--clr: #fff;" class="hand"><i></i></div>
+            
             <span>
                 <span style="--i:1;"><b>1</b></span>
                 <span style="--i:2;"><b>2</b></span>
@@ -31,5 +29,6 @@
             </span>
         </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
