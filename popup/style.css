@@ -1,0 +1,32 @@
+.mdl {
+    position: fixed;
+    /* fixa o modal na tela */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: rgba(0, 0, 0, 0.6);
+    /* fundo escuro semi-transparente */
+
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.mdl.open {
+    opacity: 1;
+    z-index: 999;
+}
+
+.mdl-inner {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    text-align: center;
+}

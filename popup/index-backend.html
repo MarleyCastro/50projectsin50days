@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pupop</title>
+</head>
+<body>
+    <button id="openModal">Open</button>
+
+    <div class="modal" id="modal">
+        <div class="modal-inner">
+            <h2>Cool tutoarial</h2>
+            <p>
+                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque ducimus quo facere doloribus? Libero repellat quis alias harum ad aliquid soluta, excepturi tempore voluptatem ipsum, dolore ut ab voluptates unde.
+            </p>
+            <button id="closeModal">close</button>
+        </div>
+    </div>
+    <script>
+        let openBtn = document.getElementById('openModal');
+        let closeBtn = document.getElementById('closeModal');
+        let modal = document.getElementById('modal');
+
+        openBtn.addEventListener("click", () => {
+            modal.classList.add("open");
+        });
+        
+        closeBtn.addEventListener("click", () => {
+            modal.classList.remove("open");
+        });
+        
+    </script>
+
+    <style>
+        .modal{
+            opacity: 0;
+            z-index: -1;
+        }
+
+        .modal.open{
+            opacity: 1;
+            z-index: 999;
+        }
+    </style>
+</body>
+</html>
