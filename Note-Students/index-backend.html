@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Note Students</title>
+</head>
+
+<body>
+
+    <h1>Program Note Students</h1>
+
+
+    <form>
+        <label>username:</label>
+        <input id="myText" required > <br> <br>
+        <label>1º Note</label>
+        <input type="text" id="note1" maxlength="10" max="10" required> <br><br>
+        <label>2º Note</label>
+        <input type="text" id="note2" maxlength="10" max="10" required>
+        <input type="submit" id="myResult" value="Result Note">
+    </form>
+    <h2 id="whereStudent"></h2>
+    <h2 id="resultDisplay"></h2>
+
+    <script>
+
+        const frm = document.querySelector("form");
+        const result = document.getElementById("resultDisplay");
+        const whereStudent = document.getElementById("whereStudent");
+        const myResult = document.getElementById("myResult");
+
+
+        frm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const myText = frm.myText.value;
+            const note1 = Number(frm.note1.value);
+            const note2 = Number(frm.note2.value);
+            
+
+            let validation =  myText.replace(/[0-9]/g, '');
+            event.target.value = myText;
+
+
+            //validation
+            if(note1 < 0 || note1 > 10 || note2 < 0 || note2 > 10){
+                result.innerHTML = `Erros invalid numbers, write valid numbers 😨 try again!!`;
+                result.style.color = "firebrick";
+                return 0;
+            }
+
+            
+            const media = (note1 + note2) / 2;
+
+            if (media <= 6) {
+                result.innerText = `So, your note this low 😢 ${media}`
+                result.style.color = "red"
+            } else if (media >= 7) {
+                result.innerText = `Amazing ${myText} note is 😱 ${media}`
+                result.style.color = "green"
+            } else {
+                result.innerText = `Amazing your note is  😂${media}`
+                result.style.color = "blue"
+            }
+            
+            whereStudent.innerHTML = `Aluno: ${myText}`
+
+
+        })
+
+
+
+
+
+    </script>
+
+
+</body>
+
+</html>

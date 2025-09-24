@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="pt">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Note Students</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    
+    <body class="container mt-5">
+    
+        <h1 class="mb-4">Program Note Students</h1>
+    
+        <form>
+            <div class="mb-3">
+                <label for="myText" class="form-label">Username</label>
+                <input id="myText" class="form-control" required>
+            </div>
+    
+            <div class="mb-3">
+                <label for="note1" class="form-label">1º Note</label>
+                <input type="text" id="note1" class="form-control" maxlength="10" max="10" required>
+            </div>
+    
+            <div class="mb-3">
+                <label for="note2" class="form-label">2º Note</label>
+                <input type="text" id="note2" class="form-control" maxlength="10" max="10" required>
+            </div>
+    
+            <button type="submit" id="myResult" class="btn btn-primary">Result Note</button>
+        </form>
+    
+        <h2 id="resultDisplay" class="mt-4"></h2>
+        <h2 id="whereStudent"></h2>
+    
+        <script>
+            const frm = document.querySelector("form");
+            const result = document.getElementById("resultDisplay");
+            const whereStudent = document.getElementById("whereStudent");
+            const myResult = document.getElementById("myResult");
+
+            frm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const myText = frm.myText.value;
+                const note1 = Number(frm.note1.value);
+                const note2 = Number(frm.note2.value);
+                const media = (note1 + note2) / 2;
+
+                let validation = myText.replace(/[0-9]/g, '');
+                e.target.value = myText;
+
+                // validation
+                if (note1 < 0 || note1 > 10 || note2 < 0 || note2 > 10) {
+                    result.innerHTML = `Erros invalid numbers, write valid numbers 😨 try again!!`;
+                    result.style.color = "firebrick";
+                    return 0;
+                }
+
+                if (media <= 6) {
+                    result.innerText = `So, your note this low 😢 ${media}`
+                    result.style.color = "red"
+                } else if (media >= 7) {
+                    result.innerText = `Amazing ${myText} note is 😱 ${media}`
+                    result.style.color = "green"
+                } else {
+                    result.innerText = `Amazing your note is  😂${media}`
+                    result.style.color = "blue"
+                }
+                
+                whereStudent.innerHTML = `Aluno: ${myText}`
+            })
+        </script>
+    
+    </body>
+    
+    </html>
+
+
+    
+
+
+
+    <script src="script.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</body>
+
+</html>
