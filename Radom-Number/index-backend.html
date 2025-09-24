@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radom Number</title>
+</head>
+<body>
+    <button id="myButton">radom</button>
+    <div class="container">
+        <label id="myLabel1" class="myLabels"></label>
+        <label id="myLabel2" class="myLabels"></label>
+        <label id="myLabel3" class="myLabels"></label>
+    </div>
+
+    <script>
+        const myButton = document.getElementById('myButton');
+        const myLabel1 = document.getElementById('myLabel1');
+        const myLabel2 = document.getElementById('myLabel2');
+        const myLabel3 = document.getElementById('myLabel3');
+        const min = 1;
+        const max = 6;
+        let radomNum1;
+        let radomNum2;
+        let radomNum3;
+
+        myButton.onclick = function(){
+            radomNum1 = Math.floor(Math.random() * max) - min;
+            radomNum2 = Math.floor(Math.random() * max) - min;
+            radomNum3 = Math.floor(Math.random() * max) - min;
+
+            myLabel1.textContent = radomNum1;
+            myLabel2.textContent = radomNum2;
+            myLabel3.textContent = radomNum3;
+        }
+    </script>
+
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        #myButton{
+            align-items: center;
+            font-size: 30px;
+        }
+
+        .container{
+            padding-top: 50px;
+            font-size: 3em;  
+        }
+
+    </style>
+</body>
+</html>
