@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <h1>Hello</h1>
+        <label for="">Which your age</label>
+        <input type="text" id="myInput">
+        <button  type="submit"id="myBtn">Value</button>
+        <h2 id="label"></h2>
+    </form>
+
+    <script>
+        const frm = document.querySelector('form')
+        const myInput = Number(frm.myInput.value);
+        const myBtn = document.getElementById('myBtn');
+        const label = document.getElementById('label');
+
+        myBtn.onclick = function(){
+            if(myInput.value.trim() == ""){
+            label.innerText = `Which your age please`
+            label.style.color = "red"
+            return 0;
+        }
+
+        }
+        frm.addEventListener("submit", (e) => {
+                e.preventDefault();
+                const inputyourAge = Number(frm.myInput.value);
+                const yearHere = new Date().getFullYear();
+                const yourAgeHere = Number(myInput - yearHere) ;
+
+                label.innerHTML = `Your age: ${yourAgeHere}`
+            })
+    </script>
+</body>
+</html>
