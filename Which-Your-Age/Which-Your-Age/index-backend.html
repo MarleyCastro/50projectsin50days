@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <h1>Which Day he was born</h1>
+        <label for="myInput">Which your age</label>
+        <input type="number" id="myInput" required>
+        <button type="submit" id="myBtn">Value</button>
+        <h2 id="label"></h2>
+    </form>
+
+    <script>
+        const myInput = document.getElementById("myInput");
+        const myBtn = document.getElementById('myBtn');
+        const label = document.getElementById('label');
+
+        myBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            const yearHere = new Date().getFullYear();
+            const yourAgeHere = Number(myInput - yearHere);
+
+            if (myInput.value.trim() === "" ) {
+                label.style.color = "red"
+                label.innerHTML = `Where your age ?`;
+                return 0;
+            }
+
+            label.style.color = "black";
+            let hereYear = yearHere - myInput.value;
+            label.innerText = `Your age is ${hereYear}`;
+        });
+    </script>
+</body>
+
+</html>
