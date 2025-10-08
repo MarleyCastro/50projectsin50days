@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <title>Seleção de Letras - Arraste e Solte</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="popup.css">
+</head>
+
+<body>
+
+    <div class="container text-center">
+        <h1>ALFABETO - Arraste para a Letra Certa</h1>
+
+        <div class="row justify-content-center mb-5">
+            <div class="col-auto">
+                <label for="letterA">A</label>
+                <input type="text" id="letterA" class="form-control dropzone">
+            </div>
+            <div class="col-auto">
+                <label for="letterB">B</label>
+                <input type="text" id="letterB" class="form-control dropzone">
+            </div>
+            <div class="col-auto">
+                <label for="letterC">C</label>
+                <input type="text" id="letterC" class="form-control dropzone">
+            </div>
+            <div class="col-auto">
+                <label for="letterD">D</label>
+                <input type="text" id="letterD" class="form-control dropzone">
+            </div>
+            <div class="col-auto">
+                <label for="letterE">E</label>
+                <input type="text" id="letterE" class="form-control dropzone">
+            </div>
+            <div class="col-auto">
+                <label for="letterF">F</label>
+                <input type="text" id="letterF" class="form-control dropzone">
+            </div>
+            <div class="col-auto">
+                <label for="letterG">G</label>
+                <input type="text" id="letterG" class="form-control dropzone">
+            </div>
+        </div>
+
+        <h2>Arraste a letra até o campo correspondente</h2>
+
+        <div id="letters" class="mt-3">
+            <div class="draggable" draggable="true" data-letter="A">A</div>
+            <div class="draggable" draggable="true" data-letter="B">B</div>
+            <div class="draggable" draggable="true" data-letter="C">C</div>
+            <div class="draggable" draggable="true" data-letter="D">D</div>
+            <div class="draggable" draggable="true" data-letter="E">E</div>
+            <div class="draggable" draggable="true" data-letter="F">F</div>
+            <div class="draggable" draggable="true" data-letter="G">G</div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center border border-2" style="height:100vh;" id="timer">
+
+    </div>
+    <div class="d-flex justify-content-center align-items-center border border-2" style="height:100vh;" id="timer">
+        <div class="meu-elemento text-center">
+            <form name="form_time">
+                <div class="modal1">
+                    <div class="mdl" id="mdl"><!--modal-->
+                        <div class="mdl-inner">
+                            <h2>Congratulations 👏</h2>
+                            <p>
+                                Congratulations on completing this challenge, it was really cool to have participated
+                                with you.
+                            </p>
+                            <button id="closeModal" type="button" class="btn btn-primary btn-lg">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        const draggables = document.querySelectorAll('.draggable');
+        const dropzones = document.querySelectorAll('.dropzone');
+        const modal = document.getElementById('mdl');
+        const totalLetras = draggables.length;
+        let acertos = 0;
+
+        // --- Arrastar letras ---
+        draggables.forEach(letter => {
+            letter.addEventListener('dragstart', e => {
+                e.dataTransfer.setData('text', e.target.dataset.letter);
+                e.target.classList.add('dragging');
+            });
+
+            letter.addEventListener('dragend', e => {
+                e.target.classList.remove('dragging');
+            });
+        });
+
+        // --- Soltar nos inputs ---
+        dropzones.forEach(zone => {
+            zone.addEventListener('dragover', e => {
+                e.preventDefault();
+                zone.classList.add('drag-over');
+            });
+
+            zone.addEventListener('dragleave', () => {
+                zone.classList.remove('drag-over');
+            });
+
+            zone.addEventListener('drop', e => {
+                e.preventDefault();
+                const draggedLetter = e.dataTransfer.getData('text');
+                const targetLetter = zone.id.replace('letter', '');
+
+                zone.classList.remove('drag-over');
+
+                if (draggedLetter === targetLetter) {
+                    // Letra correta
+                    if (zone.value !== draggedLetter) {
+                        acertos++; // conta só a primeira vez
+                    }
+                    zone.value = draggedLetter;
+                    zone.classList.add('correct');
+                    zone.classList.remove('wrong');
+
+                    // Desativa a letra arrastada
+                    const dragged = document.querySelector(`[data-letter="${draggedLetter}"]`);
+                    dragged.draggable = false;
+                    dragged.style.opacity = '0.5';
+
+                    // Verifica se todas estão certas
+                    if (acertos === totalLetras) {
+                        setTimeout(() => {
+                            modal.classList.add('open'); // abre popup
+                        }, 600);
+                    }
+
+                } else {
+                    // Letra errada
+                    zone.classList.add('wrong');
+                    zone.classList.remove('correct');
+                    setTimeout(() => {
+                        zone.classList.remove('wrong');
+                    }, 800);
+                }
+            });
+        });
+
+        // --- Fecha popup ---
+        const closeBtn = document.getElementById('closeModal');
+        closeBtn.addEventListener("click", () => {
+            modal.classList.remove("open");
+        });
+
+
+    </script>
+
+</body>
+
+</html>

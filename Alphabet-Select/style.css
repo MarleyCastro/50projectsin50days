@@ -1,0 +1,61 @@
+body {
+    background: #f0f4ff;
+    padding: 30px;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+h1,
+h2 {
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.form-control {
+    width: 60px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.dropzone {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.dropzone.drag-over {
+    background: #d9ebff;
+    border-color: #007bff;
+}
+
+.draggable {
+    cursor: grab;
+    user-select: none;
+    background: #5b8cff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin: 5px;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.draggable:active {
+    cursor: grabbing;
+    transform: scale(1.05);
+}
+
+.correct {
+    background-color: #198754 !important;
+    /* verde */
+    color: white !important;
+}
+
+.wrong {
+    background-color: #dc3545 !important;
+    /* vermelho */
+    color: white !important;
+}
