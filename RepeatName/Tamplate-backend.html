@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1></h1>
+    <input type="text" id="inputName">
+    <input type="number" name="inputNumber" id="inputNumber" required onerror="">
+    <button type="button" id="submitBtn">submit</button>
+    <h1 id="view"></h1>
+
+    <script>
+        const inputName = document.getElementById("inputName");
+        const inputNumber = document.getElementById("inputNumber");
+        const submitBtn = document.getElementById("submitBtn");
+
+        submitBtn.addEventListener("click", (e) => {
+            if(inputName.value.trim() === "" || inputNumber.value.trim() === ""){
+                view.style.color = "red";
+                view.innerText = "But don't have dados 😶‍🌫️ !!"
+                return 0;
+            } 
+
+            if( inputNumber.value < 0){
+                view.style.color = "red";
+                view.innerText = "Write value most high 😱"
+                return 0;
+            } 
+
+            view.style.color = "black";
+            view.innerText = `Welcome ${inputName.value} you have ${inputNumber.value}`;
+        })
+    </script>
+</body>
+</html>

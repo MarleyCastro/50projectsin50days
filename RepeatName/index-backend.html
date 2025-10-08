@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Name Repeat</h1>
+    <label>username:</label>
+    <input id="myText" required>
+    <input type="number" name="inNumber" id="inNumber" required>
+    <button id="myResult">Result Note</button>
+
+    <h2 id="whereStudent">Result</h2>
+
+
+    <script>
+        const myText = document.getElementById("myText");
+        const myResult = document.getElementById("myResult");
+        const whereStudent = document.getElementById("whereStudent");
+        const inNumber = document.getElementById("inNumber");
+
+        myResult.addEventListener("click", () => {
+            
+            const repetitions = parseInt(inNumber.value, 10); // converte para número
+            if (isNaN(repetitions) || repetitions < 1 || myText.value.trim() == "") {whereStudent.style.color = "red";
+                whereStudent.innerHTML = "Digite um número válido ou seu nome!";
+                return 0;
+            }
+            whereStudent.innerHTML = "Aluno: " + myText.value.repeat(repetitions); 
+            
+        });
+    </script>
+</body>
+
+</html>
