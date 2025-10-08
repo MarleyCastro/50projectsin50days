@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destinos Turísticos</title>
+
+    <!-- OpenLayers CSS -->
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/css/ol.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #maps-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        #Map-1,
+        #Map-2 {
+            width: 50%;
+            height: 400px;
+            border: 1px solid #ccc;
+            display: none;
+            /* inicial escondido */
+        }
+
+        #controls {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input[type="number"] {
+            width: 50px;
+            padding: 5px;
+        }
+
+        button {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Destinos Turísticos</h1>
+
+    <div id="controls">
+        Zoom: <input type="number" id="zoomInput" min="5" max="15" value="6" maxlength="15">
+        <button id="btnSubmitSeach">Mostrar Mapas</button>
+        <h1 id="view"></h1>
+    </div>
+
+    <div id="maps-container">
+        <div id="Map-1"></div>
+        <div id="Map-2"></div>
+    </div>
+
+    <!-- OpenLayers JS -->
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.9.0/build/ol.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
