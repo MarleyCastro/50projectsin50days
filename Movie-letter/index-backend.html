@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie-Letter</title>
+</head>
+
+<body>
+    <h1>Movie-Letter</h1>
+    <form id="form">
+        <p> Title:
+            <input type="text" id="Title" required>
+        </p>
+
+        <p> Duration:
+            <input type="number" name="" id="Duration" required>
+        </p>
+        <input type="submit" value="Converter Min in Hours">
+    </form>
+
+    <h1 id="viewTitle"></h1>
+    <h2 id="viewDuration"></h2>
+
+    <script>
+        const frm = document.getElementById("form");
+        const Title = document.getElementById("Title");
+        const Duration = document.getElementById("Duration");
+
+        frm.addEventListener("click", (e) => {
+            e.preventDefault();
+            const viewTitle = document.getElementById("viewTitle");
+            const viewDuration = document.getElementById("viewDuration");
+
+            
+            if (Title.value.trim() === "") {
+                viewTitle.style.color = "brown";
+                viewTitle.innerText = `where is your movie 😶‍🌫️`;
+                return 0;
+            }
+
+            const hour = Math.floor(Duration.value/60);
+            const minutes = Duration.value % 60
+
+            viewTitle.style.color = "blue";
+            viewTitle.innerText = `Your movie: ${Title.value}`
+            viewDuration.innerText = `Your movie: ${hour} Hour and ${minutes}`
+        })
+
+    </script>
+</body>
+
+</html>
