@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vehicle resale</title>
+</head>
+
+<body>
+    <h1>vehicle resale JS</h1>
+    <form id="form">
+        <p> Veiche:
+            <input type="text" id="vehicle" required>
+        </p>
+
+        <p> Price:
+            <input type="number" name="" id="Price" required>
+        </p>
+        <input type="submit" value="look sale">
+    </form>
+
+    <h1 id="viewvehicle"></h1>
+    <h2 id="viewPrice"></h2>
+    <h2 id="viewDivision"></h2>
+
+    <script>
+        const frm = document.getElementById("form");
+        const vehicle = document.getElementById("vehicle");
+        const Price = document.getElementById("Price");
+        const viewDivision = document.getElementById("viewDivision");
+
+        frm.addEventListener("click", (e) => {
+            e.preventDefault();
+            const viewvehicle = document.getElementById("viewvehicle");
+            const viewPrice = document.getElementById("viewPrice");
+
+
+            if (vehicle.value.trim() === "") {
+                viewvehicle.style.color = "brown";
+                viewvehicle.innerText = `where is your movie 😶‍🌫️`;
+                return 0;
+            }
+
+            const amtValue = Math.floor(Price.value / 2);
+            const amtDivision = Price.value / 12;
+
+            viewvehicle.innerText = `Sale: ${vehicle.value}`;
+            viewPrice.innerText = `entry of: R$ ${amtValue}`;
+            viewDivision.innerText = `+12x of ${amtDivision}`;
+        })
+
+    </script>
+</body>
+
+</html>
