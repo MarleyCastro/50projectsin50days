@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Pharmacy JS</h1>
+
+    <form action="" id="form">
+        <p> medicine:
+            <input type="text" name="" id="medicine" required>
+        </p>
+        <p> price:
+            <input type="number" name="" id="price">
+        </p>
+        <input type="submit" value="amount total">
+    </form>
+    <h1 id="viewText"></h1>
+    <h1 id="discount"></h1>
+
+    <script>
+        const frm = document.getElementById("form");
+        const viewText = document.getElementById("viewText");
+        const discount = document.getElementById("discount");
+
+
+        frm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const medicine = document.getElementById("medicine").value.trim();
+            const price = parseFloat(document.getElementById("price").value);
+
+            if (price === "" || medicine === "") {
+                viewText.style.color = "brown";
+                viewText.innerText = `no data, please enter😶‍🌫️`;
+                return 0;
+            }
+
+            const valueTotal = price * 0.9; 
+
+            viewText.style.color = "green";
+            viewText.innerText = `promotion of ${medicine}`;
+
+            discount.style.color = "black";
+            discount.innerText = `Value amount to pay is ${valueTotal}`;
+
+        })
+    </script>
+</body>
+
+</html>
+
