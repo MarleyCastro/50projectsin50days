@@ -1,0 +1,7 @@
+ img {
+     height: 15em;
+     width: 15em;
+     border-radius: 50%;
+     object-fit: cover;
+     background: #dfdfdf;
+ }
